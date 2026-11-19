@@ -132,6 +132,43 @@
     0 22px 40px -18px color-mix(in oklab, var(--espresso) 32%, transparent);
 }
 
+/*
+ * Fallback for older phones/browsers that can't read oklch() or color-mix()
+ * (e.g. iPhones on iOS 15 and earlier). Without this they render plain black & white.
+ */
+@supports not (color: oklch(0 0 0)) {
+  :root,
+  .dark {
+    --espresso: hsl(22, 40%, 15%);
+    --espresso-soft: hsl(22, 35%, 21%);
+    --nude: hsl(38, 45%, 97%);
+    --paper: hsl(36, 40%, 95%);
+    --oat: hsl(35, 35%, 86%);
+    --latte: hsl(32, 40%, 80%);
+    --caramel: hsl(24, 75%, 48%);
+    --caramel-deep: hsl(22, 72%, 40%);
+    --amber: hsl(38, 80%, 55%);
+    --line: hsla(22, 40%, 15%, 0.12);
+    --card: hsl(35, 38%, 92%);
+    --primary-foreground: hsl(38, 45%, 98%);
+    --muted-foreground: hsl(25, 18%, 36%);
+    --destructive: hsl(4, 75%, 50%);
+    --destructive-foreground: hsl(38, 45%, 98%);
+    --gloss-espresso:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%),
+      linear-gradient(180deg, hsl(24, 75%, 48%), hsl(22, 72%, 40%));
+    --shadow-pill:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 10px 22px -12px rgba(176, 72, 28, 0.8);
+    --shadow-soft:
+      0 1px 2px rgba(54, 34, 23, 0.06),
+      0 10px 28px -14px rgba(54, 34, 23, 0.22);
+    --shadow-raised:
+      0 2px 4px rgba(54, 34, 23, 0.06),
+      0 22px 40px -18px rgba(54, 34, 23, 0.32);
+  }
+}
+
 /* Dark scope uses the same warm coffee palette (no grayscale fallback) */
 .dark {
   --background: var(--nude);
