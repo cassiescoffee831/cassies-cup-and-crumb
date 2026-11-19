@@ -11,9 +11,11 @@
 /* Cup & Crumb design system — print lookbook × Y2K café menu. */
 
 @theme inline {
-  --font-display: "Bodoni Moda", "Didot", Georgia, serif;
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: var(--shadow-soft);
+  --shadow-lift: var(--shadow-raised);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -49,6 +51,8 @@
   --color-latte: var(--latte);
   --color-caramel: var(--caramel);
   --color-paper: var(--paper);
+  --color-amber: var(--amber);
+  --color-line: var(--line);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -65,36 +69,39 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.75rem; /* 12px cards */
 
-  /* Brand */
-  --espresso: oklch(0.239 0.032 44.7); /* #2C1A12 */
-  --espresso-soft: oklch(0.332 0.048 47.2);
-  --nude: oklch(0.945 0.018 70.2); /* #F5EBE0 */
-  --oat: oklch(0.882 0.031 69.0); /* #E6D5C3 */
-  --latte: oklch(0.815 0.034 52.2); /* #D5BDAF */
-  --caramel: oklch(0.662 0.061 57.8);
-  --paper: oklch(0.975 0.01 72.7);
+  /* Brand — warm coffee shop */
+  --espresso: oklch(0.25 0.026 50.9); /* #2C1E16 */
+  --espresso-soft: oklch(0.304 0.034 51.1);
+  --nude: oklch(0.98 0.007 80.7); /* #FBF8F3 oat-milk cream */
+  --paper: oklch(0.96 0.014 78.3); /* alternate section tint */
+  --oat: oklch(0.915 0.026 76.8);
+  --latte: oklch(0.86 0.042 70.8);
+  --caramel: oklch(0.629 0.132 47.6); /* #C86D3B terracotta */
+  --caramel-deep: oklch(0.544 0.124 45.6);
+  --amber: oklch(0.731 0.142 77.6); /* #D99B26 golden amber */
+  --line: color-mix(in oklab, var(--espresso) 12%, transparent);
 
   --background: var(--nude);
   --foreground: var(--espresso);
-  --card: var(--paper);
+  --card: oklch(0.946 0.016 79.4); /* #F3ECE1 warm beige */
   --card-foreground: var(--espresso);
-  --popover: var(--paper);
+  --popover: var(--card);
   --popover-foreground: var(--espresso);
-  --primary: var(--espresso);
-  --primary-foreground: var(--nude);
+  --primary: var(--caramel);
+  --primary-foreground: oklch(1 0 0);
   --secondary: var(--oat);
   --secondary-foreground: var(--espresso);
   --muted: var(--oat);
-  --muted-foreground: oklch(0.45 0.045 50);
-  --accent: var(--latte);
+  --muted-foreground: oklch(0.484 0.034 56.8);
+  --accent: var(--amber);
   --accent-foreground: var(--espresso);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: var(--nude);
-  --border: var(--espresso);
-  --input: var(--espresso);
-  --ring: var(--caramel);
+  --destructive-foreground: oklch(1 0 0);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--amber);
 
   --chart-1: var(--espresso);
   --chart-2: var(--caramel);
@@ -107,17 +114,22 @@
   --sidebar-primary-foreground: var(--nude);
   --sidebar-accent: var(--oat);
   --sidebar-accent-foreground: var(--espresso);
-  --sidebar-border: var(--espresso);
+  --sidebar-border: var(--line);
   --sidebar-ring: var(--caramel);
 
   --cheetah: url("/cheetah.svg");
   --gloss-espresso:
-    linear-gradient(180deg, color-mix(in oklab, var(--nude) 22%, transparent) 0%, transparent 46%),
-    linear-gradient(180deg, var(--espresso-soft), var(--espresso));
+    linear-gradient(180deg, color-mix(in oklab, white 18%, transparent) 0%, transparent 50%),
+    linear-gradient(180deg, var(--caramel), var(--caramel-deep));
   --shadow-pill:
-    inset 0 1px 0 color-mix(in oklab, var(--nude) 35%, transparent),
-    inset 0 -2px 4px color-mix(in oklab, var(--espresso) 60%, transparent),
-    0 8px 18px -10px color-mix(in oklab, var(--espresso) 70%, transparent);
+    inset 0 1px 0 color-mix(in oklab, white 30%, transparent),
+    0 10px 22px -12px color-mix(in oklab, var(--caramel-deep) 80%, transparent);
+  --shadow-soft:
+    0 1px 2px color-mix(in oklab, var(--espresso) 6%, transparent),
+    0 10px 28px -14px color-mix(in oklab, var(--espresso) 22%, transparent);
+  --shadow-raised:
+    0 2px 4px color-mix(in oklab, var(--espresso) 6%, transparent),
+    0 22px 40px -18px color-mix(in oklab, var(--espresso) 32%, transparent);
 }
 
 @layer base {
@@ -138,8 +150,13 @@
     scroll-margin-top: 6rem;
   }
   ::selection {
-    background: var(--espresso);
-    color: var(--nude);
+    background: var(--amber);
+    color: var(--espresso);
+  }
+  /* Accent words inside headings: upright, warm terracotta */
+  .font-display em {
+    font-style: normal;
+    color: var(--caramel);
   }
 }
 
@@ -147,7 +164,28 @@
 
 @utility font-display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
+  letter-spacing: -0.025em;
+}
+
+/* Warm beige card with soft shadow */
+@utility card-warm {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Gentle hover lift for clickable things and cards */
+@utility lift {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-raised);
+    border-color: color-mix(in oklab, var(--amber) 55%, transparent);
+  }
 }
 
 @utility cheetah {
@@ -158,19 +196,17 @@
 
 /* Thin horizontal print trim framed by hairlines */
 @utility cheetah-trim {
-  height: 16px;
+  height: 14px;
   background-image: var(--cheetah);
   background-size: 90px 90px;
-  border-top: 1px solid var(--espresso);
-  border-bottom: 1px solid var(--espresso);
 }
 
 /* Thin print frame around a card: wrap content in an inner element */
 @utility cheetah-frame {
-  padding: 9px;
+  padding: 7px;
   background-image: var(--cheetah);
   background-size: 90px 90px;
-  border: 1px solid var(--espresso);
+  box-shadow: var(--shadow-soft);
 }
 
 /* Small pill badge with print fill and legible label */
@@ -178,18 +214,19 @@
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
-  border: 1px solid var(--espresso);
   background-image: var(--cheetah);
   background-size: 54px 54px;
-  padding: 3px;
+  padding: 2px;
   & > span {
     border-radius: 9999px;
-    background: var(--nude);
-    padding: 0.2rem 0.65rem;
+    background: color-mix(in oklab, var(--amber) 22%, var(--nude));
+    color: var(--espresso);
+    padding: 0.25rem 0.75rem;
     white-space: nowrap;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 }
@@ -203,17 +240,19 @@
   border-radius: 9999px;
   padding: 0.95rem 1.75rem;
   background: var(--gloss-espresso);
-  color: var(--nude);
+  color: var(--primary-foreground);
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   box-shadow: var(--shadow-pill);
-  border: 1px solid var(--espresso);
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    transform 200ms ease,
+    box-shadow 200ms ease;
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow:
+      var(--shadow-pill),
+      0 0 0 3px color-mix(in oklab, var(--amber) 35%, transparent);
   }
   &:active {
     transform: translateY(1px);
@@ -228,29 +267,37 @@
   gap: 0.5rem;
   border-radius: 9999px;
   padding: 0.85rem 1.4rem;
-  border: 1px solid var(--espresso);
+  border: 1px solid var(--line);
+  background: var(--card);
   color: var(--espresso);
   font-weight: 500;
   font-size: 0.9rem;
-  transition: background-color 180ms ease;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
   &:hover {
-    background: var(--oat);
+    transform: translateY(-2px);
+    border-color: var(--amber);
+    box-shadow: var(--shadow-raised);
   }
 }
 
-/* Menu prices: sans for legibility (Bodoni hairlines make 4 read like 1) */
+/* Menu prices */
 @utility price {
-  font-family: var(--font-sans);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
 
 /* Mono kicker labels */
 @utility kicker {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -258,9 +305,9 @@
 @utility leader {
   flex: 1 1 auto;
   min-width: 1.5rem;
-  border-bottom: 1px dotted var(--espresso);
+  border-bottom: 2px dotted var(--amber);
   transform: translateY(-0.35em);
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 /* Gallery placeholder tile */
@@ -283,6 +330,7 @@
   height: 44px;
   background-image: var(--cheetah);
   background-size: 60px 60px;
+  border-top-left-radius: var(--radius);
   clip-path: polygon(0 0, 100% 0, 100% 8px, 8px 8px, 8px 100%, 0 100%);
   pointer-events: none;
 }
@@ -294,6 +342,7 @@
   height: 44px;
   background-image: var(--cheetah);
   background-size: 60px 60px;
+  border-bottom-right-radius: var(--radius);
   clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 0);
   pointer-events: none;
 }

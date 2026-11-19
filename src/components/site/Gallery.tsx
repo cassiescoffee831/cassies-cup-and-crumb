@@ -1,17 +1,19 @@
+import { Camera } from "lucide-react";
+
 type SlotProps = { label: string; caption: string; aspect: string };
 
 /* Photo placeholder: replace the inner block with an <img> when photos are ready. */
 function PhotoSlot({ label, caption, aspect }: SlotProps) {
   return (
     <figure className="mb-4 break-inside-avoid md:mb-6">
-      <div className={`relative overflow-hidden rounded-[1.25rem] border border-espresso ${aspect}`}>
+      <div className={`lift relative overflow-hidden rounded-lg border border-line shadow-card ${aspect}`}>
         <div className="photo-slot flex size-full items-center justify-center p-4">
-          <span className="kicker rounded-full border border-espresso bg-nude px-3 py-1.5 text-center">{label}</span>
+          <span className="kicker rounded-full bg-nude/90 px-3 py-1.5 text-center shadow-card">{label}</span>
         </div>
         <span className="corner-tl rounded-tl-[1.25rem]" aria-hidden />
         <span className="corner-br rounded-br-[1.25rem]" aria-hidden />
       </div>
-      <figcaption className="mt-2 font-display text-sm italic text-muted-foreground">{caption}</figcaption>
+      <figcaption className="mt-2 text-sm text-muted-foreground">{caption}</figcaption>
     </figure>
   );
 }
@@ -22,9 +24,12 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="kicker">05 — Lookbook</span>
-            <h2 className="mt-4 font-display text-5xl font-medium leading-[0.95] md:text-7xl">
-              The <em className="font-normal">Feed</em>
+            <span className="kicker inline-flex items-center gap-2">
+              <Camera className="size-4 text-amber" aria-hidden />
+              05 — Lookbook
+            </span>
+            <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] md:text-7xl">
+              The <em className="font-bold">Feed</em>
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">

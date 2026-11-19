@@ -31,4 +31,4 @@ use the editor.
 
 ## Project rules
 - The site is one long scrolling page (`src/routes/index.tsx`) with in-page section anchors, as the brief requested; keep menu text as literal JSX so Lovable Visual Edit can change it.
-- Brand styling (cheetah trims, glossy pills, hairlines) lives as `@utility` classes in `src/styles.css`; components use those instead of ad hoc colors.
+- Brand styling (cheetah trims, pills, warm cards, hover lift) lives as `@utility` classes and tokens in `src/styles.css`; components use those instead of ad hoc colors.
