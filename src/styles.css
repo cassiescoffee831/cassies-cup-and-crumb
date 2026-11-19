@@ -1,9 +1,6 @@
 /*
  * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
- * - Keep every @import in this top block, above @theme and the rest of the file. Install an
- *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
- *   build resolves @import from the filesystem. Load those with a <link> in the head() of
- *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ * Keep every @import in this top block. Web fonts load via <link> in src/routes/__root.tsx.
  */
 @import "tailwindcss" source(none);
 @source "../src";
@@ -11,25 +8,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The design lives in this file: oklch color tokens on the shadcn variables
- * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
- * new tokens as needed, font tokens, and custom styles and animations.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+/* Cup & Crumb design system — print lookbook × Y2K café menu. */
 
 @theme inline {
+  --font-display: "Bodoni Moda", "Didot", Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -57,6 +42,13 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-espresso: var(--espresso);
+  --color-espresso-soft: var(--espresso-soft);
+  --color-nude: var(--nude);
+  --color-oat: var(--oat);
+  --color-latte: var(--latte);
+  --color-caramel: var(--caramel);
+  --color-paper: var(--paper);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -73,83 +65,257 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  --radius: 1rem;
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Brand */
+  --espresso: oklch(0.239 0.032 44.7); /* #2C1A12 */
+  --espresso-soft: oklch(0.332 0.048 47.2);
+  --nude: oklch(0.945 0.018 70.2); /* #F5EBE0 */
+  --oat: oklch(0.882 0.031 69.0); /* #E6D5C3 */
+  --latte: oklch(0.815 0.034 52.2); /* #D5BDAF */
+  --caramel: oklch(0.662 0.061 57.8);
+  --paper: oklch(0.975 0.01 72.7);
+
+  --background: var(--nude);
+  --foreground: var(--espresso);
+  --card: var(--paper);
+  --card-foreground: var(--espresso);
+  --popover: var(--paper);
+  --popover-foreground: var(--espresso);
+  --primary: var(--espresso);
+  --primary-foreground: var(--nude);
+  --secondary: var(--oat);
+  --secondary-foreground: var(--espresso);
+  --muted: var(--oat);
+  --muted-foreground: oklch(0.45 0.045 50);
+  --accent: var(--latte);
+  --accent-foreground: var(--espresso);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--nude);
+  --border: var(--espresso);
+  --input: var(--espresso);
+  --ring: var(--caramel);
+
+  --chart-1: var(--espresso);
+  --chart-2: var(--caramel);
+  --chart-3: var(--latte);
+  --chart-4: var(--oat);
+  --chart-5: var(--espresso-soft);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--espresso);
+  --sidebar-primary: var(--espresso);
+  --sidebar-primary-foreground: var(--nude);
+  --sidebar-accent: var(--oat);
+  --sidebar-accent-foreground: var(--espresso);
+  --sidebar-border: var(--espresso);
+  --sidebar-ring: var(--caramel);
+
+  --cheetah: url("/cheetah.svg");
+  --gloss-espresso:
+    linear-gradient(180deg, color-mix(in oklab, var(--nude) 22%, transparent) 0%, transparent 46%),
+    linear-gradient(180deg, var(--espresso-soft), var(--espresso));
+  --shadow-pill:
+    inset 0 1px 0 color-mix(in oklab, var(--nude) 35%, transparent),
+    inset 0 -2px 4px color-mix(in oklab, var(--espresso) 60%, transparent),
+    0 8px 18px -10px color-mix(in oklab, var(--espresso) 70%, transparent);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
-
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+  ::selection {
+    background: var(--espresso);
+    color: var(--nude);
+  }
+}
+
+/* ——— Brand utilities ——— */
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+@utility cheetah {
+  background-color: var(--caramel);
+  background-image: var(--cheetah);
+  background-size: 90px 90px;
+}
+
+/* Thin horizontal print trim framed by hairlines */
+@utility cheetah-trim {
+  height: 16px;
+  background-image: var(--cheetah);
+  background-size: 90px 90px;
+  border-top: 1px solid var(--espresso);
+  border-bottom: 1px solid var(--espresso);
+}
+
+/* Thin print frame around a card: wrap content in an inner element */
+@utility cheetah-frame {
+  padding: 9px;
+  background-image: var(--cheetah);
+  background-size: 90px 90px;
+  border: 1px solid var(--espresso);
+}
+
+/* Small pill badge with print fill and legible label */
+@utility pill-cheetah {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid var(--espresso);
+  background-image: var(--cheetah);
+  background-size: 54px 54px;
+  padding: 3px;
+  & > span {
+    border-radius: 9999px;
+    background: var(--nude);
+    padding: 0.2rem 0.65rem;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* Retro glossy espresso pill button */
+@utility btn-gloss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  padding: 0.95rem 1.75rem;
+  background: var(--gloss-espresso);
+  color: var(--nude);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-pill);
+  border: 1px solid var(--espresso);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Outline pill companion */
+@utility btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid var(--espresso);
+  color: var(--espresso);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 180ms ease;
+  &:hover {
+    background: var(--oat);
+  }
+}
+
+/* Menu prices: sans for legibility (Bodoni hairlines make 4 read like 1) */
+@utility price {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Mono kicker labels */
+@utility kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Dotted price leader on menu boards */
+@utility leader {
+  flex: 1 1 auto;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted var(--espresso);
+  transform: translateY(-0.35em);
+  opacity: 0.55;
+}
+
+/* Gallery placeholder tile */
+@utility photo-slot {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 11px,
+      color-mix(in oklab, var(--espresso) 7%, transparent) 11px 12px
+    ),
+    var(--latte);
+}
+
+/* Print L-shaped corner accents */
+@utility corner-tl {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 44px;
+  height: 44px;
+  background-image: var(--cheetah);
+  background-size: 60px 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 8px, 8px 8px, 8px 100%, 0 100%);
+  pointer-events: none;
+}
+@utility corner-br {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 44px;
+  height: 44px;
+  background-image: var(--cheetah);
+  background-size: 60px 60px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 0);
+  pointer-events: none;
+}
+
+@utility marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee {
+    animation: none;
   }
 }

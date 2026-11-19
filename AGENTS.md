@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- The site is one long scrolling page (`src/routes/index.tsx`) with in-page section anchors, as the brief requested; keep menu text as literal JSX so Lovable Visual Edit can change it.
+- Brand styling (cheetah trims, glossy pills, hairlines) lives as `@utility` classes in `src/styles.css`; components use those instead of ad hoc colors.
