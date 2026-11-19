@@ -72,25 +72,25 @@
   --radius: 0.75rem; /* 12px cards */
 
   /* Brand — warm coffee shop */
-  --espresso: oklch(0.25 0.026 50.9); /* #2C1E16 */
-  --espresso-soft: oklch(0.304 0.034 51.1);
-  --nude: oklch(0.98 0.007 80.7); /* #FBF8F3 oat-milk cream */
-  --paper: oklch(0.96 0.014 78.3); /* alternate section tint */
-  --oat: oklch(0.915 0.026 76.8);
-  --latte: oklch(0.86 0.042 70.8);
-  --caramel: oklch(0.629 0.132 47.6); /* #C86D3B terracotta */
-  --caramel-deep: oklch(0.544 0.124 45.6);
-  --amber: oklch(0.731 0.142 77.6); /* #D99B26 golden amber */
+  --espresso: oklch(0.274 0.036 50.8); /* hsl(22 40% 15%) */
+  --espresso-soft: oklch(0.336 0.042 50.9);
+  --nude: oklch(0.981 0.006 81.5); /* hsl(38 45% 97%) oat-milk cream */
+  --paper: oklch(0.966 0.009 78.3); /* alternate section tint */
+  --oat: oklch(0.903 0.023 76.5); /* hsl(35 35% 86%) */
+  --latte: oklch(0.859 0.036 71);
+  --caramel: oklch(0.639 0.16 48.7); /* hsl(24 75% 48%) terracotta */
+  --caramel-deep: oklch(0.548 0.137 46.5);
+  --amber: oklch(0.767 0.146 76); /* hsl(38 80% 55%) golden amber */
   --line: color-mix(in oklab, var(--espresso) 12%, transparent);
 
   --background: var(--nude);
   --foreground: var(--espresso);
-  --card: oklch(0.946 0.016 79.4); /* #F3ECE1 warm beige */
+  --card: oklch(0.945 0.014 76.6); /* hsl(35 38% 92%) warm beige */
   --card-foreground: var(--espresso);
   --popover: var(--card);
   --popover-foreground: var(--espresso);
   --primary: var(--caramel);
-  --primary-foreground: oklch(1 0 0);
+  --primary-foreground: oklch(0.987 0.004 81.5); /* hsl(38 45% 98%) */
   --secondary: var(--oat);
   --secondary-foreground: var(--espresso);
   --muted: var(--oat);
@@ -130,6 +130,23 @@
   --shadow-raised:
     0 2px 4px color-mix(in oklab, var(--espresso) 6%, transparent),
     0 22px 40px -18px color-mix(in oklab, var(--espresso) 32%, transparent);
+}
+
+/* Dark scope uses the same warm coffee palette (no grayscale fallback) */
+.dark {
+  --background: var(--nude);
+  --foreground: var(--espresso);
+  --card: oklch(0.945 0.014 76.6);
+  --card-foreground: var(--espresso);
+  --popover: var(--card);
+  --popover-foreground: var(--espresso);
+  --primary: var(--caramel);
+  --primary-foreground: oklch(0.987 0.004 81.5);
+  --secondary: var(--oat);
+  --secondary-foreground: var(--espresso);
+  --muted: var(--oat);
+  --accent: var(--amber);
+  --accent-foreground: var(--espresso);
 }
 
 @layer base {
