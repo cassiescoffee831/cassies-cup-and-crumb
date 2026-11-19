@@ -6,7 +6,7 @@ type SlotProps = { label: string; caption: string; aspect: string };
 function PhotoSlot({ label, caption, aspect }: SlotProps) {
   return (
     <figure className="mb-4 break-inside-avoid md:mb-6">
-      <div className={`lift relative overflow-hidden rounded-lg border border-line shadow-card ${aspect}`}>
+      <div className={`lift relative overflow-hidden rounded-lg border border-amber shadow-card ${aspect}`}>
         <div className="photo-slot flex size-full items-center justify-center p-4">
           <span className="kicker rounded-full bg-nude/90 px-3 py-1.5 text-center shadow-card">{label}</span>
         </div>
@@ -28,8 +28,8 @@ export function Gallery() {
               <Camera className="size-4 text-amber" aria-hidden />
               05 — Lookbook
             </span>
-            <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] md:text-7xl">
-              The <em className="font-bold">Feed</em>
+            <h2 className="mt-4 font-display text-5xl font-semibold leading-[0.95] md:text-7xl">
+              The <em>Feed</em>
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">

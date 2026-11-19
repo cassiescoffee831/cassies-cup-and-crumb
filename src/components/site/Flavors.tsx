@@ -4,7 +4,7 @@ type FlavorProps = { no: string; name: string; tag: string; note: string };
 
 function Flavor({ no, name, tag, note }: FlavorProps) {
   return (
-    <article className="card-warm lift group flex min-h-[15rem] flex-col justify-between p-6 md:min-h-[18rem] md:p-8">
+    <article className="card-mocha lift group flex min-h-[15rem] flex-col justify-between p-6 md:min-h-[18rem] md:p-8">
       <div className="flex items-center justify-between">
         <span className="kicker text-amber">No. {no}</span>
         <span className="pill-cheetah">
@@ -12,8 +12,8 @@ function Flavor({ no, name, tag, note }: FlavorProps) {
         </span>
       </div>
       <div>
-        <h3 className="font-display text-3xl font-bold transition-colors group-hover:text-primary leading-[1.02] md:text-4xl">{name}</h3>
-        <p className="mt-3 max-w-[22rem] text-sm leading-relaxed text-muted-foreground md:text-base">{note}</p>
+        <h3 className="font-display text-3xl font-semibold transition-colors group-hover:text-amber leading-[1.02] md:text-4xl">{name}</h3>
+        <p className="mt-3 max-w-[22rem] text-sm leading-relaxed text-cream/75 md:text-base">{note}</p>
       </div>
     </article>
   );
@@ -29,8 +29,8 @@ export function Flavors() {
               <Bean className="size-4 text-amber" aria-hidden />
               03 — Tasting notes
             </span>
-            <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] md:text-7xl">
-              The house <em className="font-bold">flavors</em>
+            <h2 className="mt-4 font-display text-5xl font-semibold leading-[0.95] md:text-7xl">
+              The house <em>flavors</em>
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:col-span-5 md:justify-self-end md:text-right">

@@ -24,10 +24,10 @@ export function Upgrades() {
             <Sparkles className="size-4" aria-hidden />
             02 — Make it yours
           </span>
-          <h2 className="mt-3 font-display text-4xl font-bold leading-none md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-none md:text-5xl">
             Toppings
             <br />
-            <em className="font-bold text-amber">&amp; upgrades</em>
+            <em className="text-amber">&amp; upgrades</em>
           </h2>
         </div>
         <ul className="grid md:col-span-9 md:grid-cols-3">

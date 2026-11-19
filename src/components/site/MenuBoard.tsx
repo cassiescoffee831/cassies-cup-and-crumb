@@ -25,10 +25,10 @@ export function MenuBoard() {
             <Coffee className="size-4 text-amber" aria-hidden />
             01 — The Menu Board
           </span>
-          <h2 className="mt-4 font-display text-5xl font-bold leading-[0.95] md:text-6xl">
+          <h2 className="mt-4 font-display text-5xl font-semibold leading-[0.95] md:text-6xl">
             Coffee
             <br />
-            <em className="font-bold">&amp; drinks</em>
+            <em>&amp; drinks</em>
           </h2>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Every drink is pulled to order on specialty espresso. Ask for it hot or iced.
@@ -68,7 +68,7 @@ export function MenuBoard() {
             <span className="pill-cheetah">
               <span>Milk swap</span>
             </span>
-            <p className="flex items-center gap-2 font-display text-xl font-bold md:text-2xl">
+            <p className="flex items-center gap-2 font-display text-xl font-semibold md:text-2xl">
               <Milk className="size-5 text-amber" aria-hidden />
               Oat Milk Substitution
             </p>

@@ -5,7 +5,7 @@ type BakeProps = { name: string; price: string; note: string };
 function BakeRow({ name, price, note }: BakeProps) {
   return (
     <li className="grid grid-cols-[1fr_auto] gap-x-6 border-b border-line py-6 last:border-b-0">
-      <h3 className="font-display text-2xl font-bold leading-tight md:text-3xl">{name}</h3>
+      <h3 className="font-display text-2xl font-semibold leading-tight md:text-3xl">{name}</h3>
       <span className="price text-xl text-primary md:text-2xl">{price}</span>
       <p className="col-span-2 mt-1.5 text-sm leading-relaxed text-muted-foreground">{note}</p>
     </li>
@@ -21,10 +21,10 @@ export function Bakery() {
             <Cookie className="size-4 text-amber" aria-hidden />
             04 — The Bakery
           </span>
-          <h2 className="mt-4 font-display text-6xl font-bold leading-[0.9] md:text-8xl">
+          <h2 className="mt-4 font-display text-6xl font-semibold leading-[0.9] md:text-8xl">
             The
             <br />
-            <em className="font-bold">Crumb</em>
+            <em>Crumb</em>
           </h2>
           <p className="mt-6 max-w-sm text-base leading-relaxed text-muted-foreground">
             Cassie’s homemade cookies and pastries — rolled, baked and boxed in small batches, the same morning you
@@ -32,10 +32,10 @@ export function Bakery() {
           </p>
 
           {/* Rotating bakes stamp */}
-          <div className="mt-10 inline-flex size-36 -rotate-6 items-center justify-center rounded-full bg-card p-1.5 shadow-card md:size-40">
+          <div className="mt-10 inline-flex size-36 -rotate-6 items-center justify-center rounded-full border border-amber bg-nude p-1.5 shadow-card md:size-40">
             <div className="flex size-full flex-col items-center justify-center rounded-full border-2 border-dashed border-amber text-center">
               <span className="kicker">Baked daily</span>
-              <span className="mt-1 font-display text-lg font-bold leading-tight">
+              <span className="mt-1 font-display text-lg font-semibold leading-tight">
                 Fresh in
                 <br />
                 Watsonville

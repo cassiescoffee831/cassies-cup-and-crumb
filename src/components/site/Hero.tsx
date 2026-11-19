@@ -16,10 +16,10 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="mt-8 font-display text-[3.4rem] font-bold leading-[0.92] tracking-[-0.02em] sm:text-7xl lg:text-[5.75rem]">
+          <h1 className="mt-8 font-display text-[3.4rem] font-semibold leading-[0.92] tracking-[-0.02em] sm:text-7xl lg:text-[5.75rem]">
             Good espresso.
             <br />
-            <em className="font-bold">Better</em> crumbs.
+            <em>Better</em> crumbs.
           </h1>
 
           <div className="mt-8 grid gap-8 border-t border-line pt-6 sm:grid-cols-[1fr_auto] sm:items-end">
@@ -39,7 +39,7 @@ export function Hero() {
               View Our Flavors
               <ArrowDown className="size-4" aria-hidden />
             </a>
-            <a href="#menu" className="group inline-flex items-center gap-1.5 text-sm font-medium underline decoration-amber decoration-2 underline-offset-[6px] transition-colors hover:text-primary">
+            <a href="#menu" className="group inline-flex items-center gap-1.5 text-sm font-medium underline decoration-amber decoration-2 underline-offset-[6px] transition-colors hover:text-gold-deep">
               See Menu &amp; Prices
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
             </a>
@@ -49,23 +49,23 @@ export function Hero() {
         {/* Magazine cover column */}
         <div className="md:col-span-5">
           <div className="lift relative cheetah-frame rounded-lg">
-            <div className="relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-lg bg-card p-6">
+            <div className="relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-lg border border-amber bg-card p-6 text-cream">
               <div className="flex items-start justify-between">
                 <span className="kicker">Cup &amp; Crumb</span>
                 <span className="kicker">Vol. Watsonville</span>
               </div>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <span className="font-display text-[16rem] font-extrabold leading-none text-primary/85 md:text-[18rem]">&amp;</span>
+                <span className="font-display text-[16rem] font-medium italic leading-none text-amber md:text-[18rem]">&amp;</span>
               </div>
               <div className="relative flex items-end justify-between gap-4">
-                <p className="font-display text-2xl font-bold leading-tight">
+                <p className="font-display text-2xl font-semibold leading-tight">
                   Coffee
                   <br />
                   &amp; cookies
                   <br />
                   by Cassie
                 </p>
-                <span className="kicker rounded-full bg-amber/25 px-3 py-1.5">Hero photo here</span>
+                <span className="kicker rounded-full border border-amber px-3 py-1.5 text-amber">Hero photo here</span>
               </div>
             </div>
           </div>
